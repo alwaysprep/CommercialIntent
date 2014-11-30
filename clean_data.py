@@ -19,6 +19,8 @@ def clean_me(file_name, write_file_name):
         for c in range(count):
             my_lis.append(line)
 
+    del mydic
+
 
     for line in my_lis:
         w.write(line)
