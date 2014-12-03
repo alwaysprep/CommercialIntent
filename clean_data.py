@@ -21,6 +21,7 @@ def clean_me(file_name, write_file_name):
 
     del mydic
 
+    random.shuffle(my_lis)
 
     for line in my_lis:
         w.write(line)
