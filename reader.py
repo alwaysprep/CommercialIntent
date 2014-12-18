@@ -30,4 +30,5 @@ def extract(file_name):
         data["class"].append(target)
 
     f.close()
-    return data
+
+    return numpy.asarray(data['text']),numpy.asarray(data['class'])
