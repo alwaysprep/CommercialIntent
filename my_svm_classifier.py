@@ -1,8 +1,12 @@
+import numpy
+from sklearn.naive_bayes import MultinomialNB, BernoulliNB, GaussianNB
+
 from sklearn.pipeline import Pipeline
 from sklearn.cross_validation import KFold
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
-from sklearn.svm import SVC
+from sklearn import metrics
+from sklearn.svm import SVC, LinearSVC
 
 from reader import extract
 
@@ -13,6 +17,10 @@ new_data_text, new_data_class = extract("cleaned_data.csv")
 
 pipeline = Pipeline([
     ('vectorizer', CountVectorizer(ngram_range=(1, 1))),
+    #('vectorizer', TfidfVectorizer(ngram_range=(1, 3))),
+    #('classifier',  MultinomialNB()),
+    #('classifier',  BernoulliNB()),
+    #('classifier', LinearSVC()),
     ('classifier', SVC(kernel='linear')),
 ])
 
@@ -34,7 +42,14 @@ for train_indices, test_indices in k_fold:
 
     score = pipeline.score(test_text, test_y)
 
+    print(score)
+
     scores.append(score)
 
 
-print(score)
+
+print(metrics.classification_report(test_y, predicted))
+
+score = sum(scores) / len(scores)
+
+print "Mean Accuracy: " + str(score)
