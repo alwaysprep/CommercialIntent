@@ -1,4 +1,3 @@
-import numpy
 from sklearn.naive_bayes import MultinomialNB, BernoulliNB, GaussianNB
 
 from sklearn.pipeline import Pipeline
