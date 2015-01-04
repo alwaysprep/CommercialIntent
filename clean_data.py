@@ -2,6 +2,12 @@ import random
 
 
 def clean_me(file_name, write_file_name):
+    """
+        Cleans the file and write it to specified file with
+            ->removing duplicate lines
+            ->shuffling data
+        Does not modify given file
+    """
     mydic={}
     for line in open(file_name):
         if line in mydic:

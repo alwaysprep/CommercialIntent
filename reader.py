@@ -11,6 +11,10 @@ tokenizer = RegexpTokenizer(r'\w+')
 
 
 def extract(file_name):
+    """
+        Extract target and the data from a file and
+        return them as numpy array for memory efficiency and speed
+    """
     data = {"text": [],
             "class": []}
 
